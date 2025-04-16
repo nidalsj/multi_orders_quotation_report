@@ -4,7 +4,8 @@
 **Overview**
 
 Grid Sales Report is an Odoo 18 module that enhances the standard quotation printing functionality. Instead of printing each sales order on a separate page, this module formats multiple orders in a grid layout (2x2) on a single page, showing only essential information like product name and quantity.
-Features
+
+**Features**
 
 Displays up to 4 sale orders per page in a clean grid layout (2 on top, 2 on bottom)
 Automatic pagination for selections exceeding 4 orders
