@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_sale_order">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-set="orders_per_page" t-value="4"/>
+                <t t-set="total_orders" t-value="len(docs)"/>
+                <t t-set="total_pages" t-value="(total_orders + orders_per_page - 1) // orders_per_page"/>
+                
+                <t t-foreach="range(total_pages)" t-as="page">
+                    <div class="page" style="page-break-after: always;">
+                        <div class="row" style="margin-bottom: 25px;">
+                            <t t-foreach="range(min(2, total_orders - page * orders_per_page))" t-as="i">
+                                <t t-set="order" t-value="docs[page * orders_per_page + i]"/>
+                                <div class="col-6" style="padding: 10px; min-height: 350px;">
+                                    <h4>Quotation <span t-field="order.name"/></h4>
+                                    <p>Customer: <span t-field="order.partner_id.name"/></p>
+                                    <p>Date: <span t-field="order.date_order" t-options="{'widget': 'date'}"/></p>
+                                    
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr style="background-color: #ccc;">
+                                                <th style="padding:5px">Product</th>
+                                                <th style="padding:5px">Quantity</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="order.order_line" t-as="line">
+                                                <td style="padding:5px"><span t-field="line.product_id.name"/></td>
+                                                <td style="padding:5px"><span t-field="line.product_uom_qty"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </t>
+                        </div>
+                        
+                        <div class="row">
+                            <t t-foreach="range(min(2, total_orders - page * orders_per_page - 2))" t-as="i">
+                                <t t-set="order" t-value="docs[page * orders_per_page + i + 2]"/>
+                                <div class="col-6" style="padding: 10px; min-height: 350px;">
+                                    <h4>Quotation <span t-field="order.name"/></h4>
+                                    <p>Customer: <span t-field="order.partner_id.name"/></p>
+                                    <p>Date: <span t-field="order.date_order" t-options="{'widget': 'date'}"/></p>
+                                    
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr style="background-color: #ccc;">
+                                                <th style="padding:5px">Product</th>
+                                                <th style="padding:5px">Quantity</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="order.order_line" t-as="line">
+                                                <td style="padding:5px"><span t-field="line.product_id.name"/></td>
+                                                <td style="padding:5px"><span t-field="line.product_uom_qty"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
