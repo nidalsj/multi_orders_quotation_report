@@ -9,7 +9,7 @@ Features
 Displays up to 4 sale orders per page in a clean grid layout (2 on top, 2 on bottom)
 Automatic pagination for selections exceeding 4 orders
 Minimalist design showing only product name and quantity
-Uses Odoo's internal layout template
+Uses Odoo's external layout template
 Compatible with bulk printing from sales order list view
 
 **Usage**
